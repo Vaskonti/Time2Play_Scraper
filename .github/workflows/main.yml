@@ -13,7 +13,7 @@ jobs:
       - name: Run Gitleaks
         uses: gitleaks/gitleaks-action@v2
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ github.TOKEN }}
 
   ManualApproval:
     needs: Gitleaks
@@ -22,10 +22,10 @@ jobs:
       - uses: trstringer/manual-approval@v1
         with:
           secret: ${{ github.TOKEN }}
-          approvers: VasilHristovDev, themask025, Kaisiq
+          approvers: Vaskonti
           minimum-approvals: 1
-          issue-title: "Deploying to production"
-          issue-body: "Please approve or deny the deployment to production"
+          issue-title: "Deploying to server"
+          issue-body: "Please approve or deny the deployment to server"
           exclude-workflow-initiator-as-approver: false
 
   DeployToProd:
