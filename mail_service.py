@@ -18,9 +18,7 @@ def load_html_file(file_path):
 def send_email(subject, body):
     ses_client.send_email(
         Destination={
-            'ToAddresses': [
-                config['EMAILS']
-            ],
+            'ToAddresses': config['RECEIVERS_TIME2PLAY'].split(",")
         },
         Message={
             'Body': {

@@ -22,7 +22,7 @@ hooks:
       runas: root
 
 branch_config:
-  main:
+  master:
     deploymentGroupName: Time2PlayDeploy
     deploymentGroupConfig:
       serviceRoleArn: arn:aws:iam::262736261154:role/CodeDeployRole
