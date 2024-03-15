@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time2Play's Sale</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #007bff;
+            margin-top: 0;
+        }
+        p {
+            margin: 10px 0;
+            line-height: 1.5;
+        }
+        span {
+            font-weight: bold;
+            color: #333;
+        }
+        .price {
+            font-size: 18px;
+            color: #333;
+        }
+        .price span {
+            color: #007bff;
+        }
+        a {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Time2Play's Sale - {{ date }}</h1>
+        <p>Hi {{ name }},</p>
+        <p>Today's sale is on: <span>{{ title }}</span></p>
+        <p class="price">Old price: <span>{{ old_price }}</span></p>
+        <p class="price">New price: <span>{{ new_price }}</span></p>
+        <a href="{{ link }}">Click here to buy</a>
+    </div>
+</body>
+</html>
