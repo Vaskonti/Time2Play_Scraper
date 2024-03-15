@@ -1,0 +1,3 @@
+BeautifulSoup4
+boto3
+python-dotenv
