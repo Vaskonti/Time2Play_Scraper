@@ -34,5 +34,6 @@ if __name__ == "__main__":
     template = mail_service.load_html_file("time2play.html")
     mail_service.send_email(
         "Time2Play.bg",
-        template.render(title=title, old_price=old_price, new_price=new_price, link=link, date=datetime.datetime.now())
+        template.render(title=title, old_price=old_price, new_price=new_price, link=link, date=datetime.datetime.now()),
+        config['RECEIVERS_TIME2PLAY'].split(","),
     )

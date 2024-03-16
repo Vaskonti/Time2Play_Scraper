@@ -22,5 +22,6 @@ if available == "В момента няма свободни часове":
 else:
     mail_service.send_email(
         "Superdoc: Doctor's appointment available",
-        mail_service.load_html_file("doctor.html").render(doctor_name=doctor_name, earliest=earliest, available=available)
+        mail_service.load_html_file("doctor.html").render(doctor_name=doctor_name, earliest=earliest, available=available),
+        config['RECEIVERS_SUPERDOC'].split(","),
     )

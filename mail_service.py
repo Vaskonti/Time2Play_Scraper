@@ -15,10 +15,10 @@ def load_html_file(file_path):
     return env.get_template(file_path)
 
 
-def send_email(subject, body):
+def send_email(subject, body, receivers):
     ses_client.send_email(
         Destination={
-            'ToAddresses': config['RECEIVERS_TIME2PLAY'].split(",")
+            'ToAddresses': receivers,
         },
         Message={
             'Body': {
