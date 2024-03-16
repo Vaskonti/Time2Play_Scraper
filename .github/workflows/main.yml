@@ -15,21 +15,21 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
 
-  ManualApproval:
-    needs: Gitleaks
-    runs-on: ubuntu-latest
-    steps:
-      - uses: trstringer/manual-approval@v1
-        with:
-          secret: ${{ github.TOKEN }}
-          approvers: Vaskonti
-          minimum-approvals: 1
-          issue-title: "Deploying to server"
-          issue-body: "Please approve or deny the deployment to server"
-          exclude-workflow-initiator-as-approver: false
+#  ManualApproval:
+#    needs: Gitleaks
+#    runs-on: ubuntu-latest
+#    steps:
+#      - uses: trstringer/manual-approval@v1
+#        with:
+#          secret: ${{ github.TOKEN }}
+#          approvers: Vaskonti
+#          minimum-approvals: 1
+#          issue-title: "Deploying to server"
+#          issue-body: "Please approve or deny the deployment to server"
+#          exclude-workflow-initiator-as-approver: false
 
   DeployToProd:
-    needs: [ManualApproval]
+#    needs: [ManualApproval]
     runs-on: ubuntu-latest
     steps:
       - name: Authenticate for AWS
