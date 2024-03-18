@@ -33,15 +33,13 @@ jobs:
     needs:
       - GitLeaks
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v2
-      - uses: shallwefootball/s3-upload-action@master
+      - uses: hkusu/s3-upload-action@v2
         with:
-          aws_key_id: ${{ secrets.AWS_DEPLOY_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_CODE_DEPLOY_SECRET_ACCESS_KEY}}
-          aws_bucket: ${{ secrets.AWS_BUCKET }}
-          source_dir: '../.env'
-          destination_dir: ''
+          aws-access-key-id: ${{ secrets.AWS_DEPLOY_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_CODE_DEPLOY_SECRET_ACCESS_KEY }}
+          aws-region: 'us-east-1'
+          aws-bucket: ${{ secrets.AWS_BUCKET }}
+          file-path: './.env'
 
   DeployToProd:
     needs: [UploadToS3]
