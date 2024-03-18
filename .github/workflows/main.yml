@@ -15,35 +15,22 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ github.TOKEN }}
 
-#  ManualApproval:
-#    needs:
-#      - Gitleaks
-#    runs-on: ubuntu-latest
-#    steps:
-#      - uses: trstringer/manual-approval@v1
-#        with:
-#          secret: ${{ github.TOKEN }}
-#          approvers: Vaskonti
-#          minimum-approvals: 1
-#          issue-title: "Deploying to server"
-#          issue-body: "Please approve or deny the deployment to server"
-#          exclude-workflow-initiator-as-approver: false
-  UploadToS3:
-    runs-on: ubuntu-latest
+  ManualApproval:
     needs:
-      - GitLeaks
+      - Gitleaks
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: hkusu/s3-upload-action@v2
+      - uses: trstringer/manual-approval@v1
         with:
-          aws-access-key-id: ${{ secrets.AWS_DEPLOY_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.AWS_CODE_DEPLOY_SECRET_ACCESS_KEY }}
-          aws-region: 'us-east-1'
-          aws-bucket: ${{ secrets.AWS_BUCKET }}
-          file-path: .env
+          secret: ${{ github.TOKEN }}
+          approvers: Vaskonti
+          minimum-approvals: 1
+          issue-title: "Deploying to server"
+          issue-body: "Please approve or deny the deployment to server"
+          exclude-workflow-initiator-as-approver: false
 
   DeployToProd:
-    needs: [UploadToS3]
+    needs: [ManualApproval]
     runs-on: ubuntu-latest
     steps:
       - name: Authenticate for AWS
