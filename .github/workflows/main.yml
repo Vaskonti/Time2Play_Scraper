@@ -39,7 +39,7 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_CODE_DEPLOY_SECRET_ACCESS_KEY }}
           aws-region: 'us-east-1'
           aws-bucket: ${{ secrets.AWS_BUCKET }}
-          file-path: './.env'
+          file-path: '.env'
 
   DeployToProd:
     needs: [UploadToS3]
