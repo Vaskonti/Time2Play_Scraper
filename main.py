@@ -7,9 +7,7 @@ from bs4 import BeautifulSoup
 import mail_service
 from dotenv import dotenv_values
 
-
 config = dotenv_values(".env")
-
 
 if __name__ == "__main__":
     sys.stdout = open('games_sales.txt', 'a')
@@ -39,6 +37,7 @@ if __name__ == "__main__":
     template = mail_service.load_html_file("time2play.html")
     mail_service.send_email(
         "Time2Play.bg",
-        template.render(title=title, old_price=old_price, new_price=new_price, link=link, date=datetime.datetime.now()),
+        template.render(title=title, old_price=old_price, new_price=new_price, link=link, date=datetime.datetime.now(),
+                        image=imgSrc),
         config['RECEIVERS_TIME2PLAY'].split(","),
     )
