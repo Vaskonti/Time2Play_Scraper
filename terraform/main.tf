@@ -17,8 +17,3 @@ module "ec2" {
   source = "./ec2"
   depends_on = [module.s3]
 }
-
-module "codedeploy" {
-  source = "./codedeploy"
-  depends_on = [module.ec2]
-}

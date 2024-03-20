@@ -20,12 +20,41 @@ resource "aws_security_group" "example" {
 }
 
 
-resource "aws_instance" "example" {
-    depends_on = [aws_security_group.example]
-    ami = "ami-07d9b9ddc6cd8dd30"
-    instance_type = "t2.micro"
+#resource "aws_instance" "python_worker" {
+#    depends_on = [aws_security_group.example]
+#    ami = "ami-07d9b9ddc6cd8dd30"
+#    instance_type = "t2.micro"
+#    tags = {
+#        Name = "python_scraper"
+#    }
+#    key_name = "PythonScraperWorker"
+#    iam_instance_profile = "WebServerRole"
+#    security_groups = [aws_security_group.example.name]
+#    user_data = <<-EOF
+#                #!/bin/bash
+#                sudo apt-get update &&
+#                sudo apt-get install python3-pip -y &&
+#                sudo apt-get install python3-venv -y &&
+#                sudo apt-get install git -y &&
+#                sudo apt install ruby-full wget -y &&
+#                cd /home/ubuntu &&
+#                sudo wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install &&
+#                sudo chmod +x ./install &&
+#                sudo ./install auto &&
+#                sudo service codedeploy-agent start &&
+#                git clone "https://github.com/Vaskonti/Time2Play_Scraper.git" /home/ubuntu/Time2Play_Scraper &&
+#                cd /home/ubuntu/Time2Play_Scraper &&
+#                pip install -r requirements.txt
+#                aws s3 cp s3://
+#                EOF
+#}
+
+resource "aws_instance" "control-node" {
+  depends_on = [aws_security_group.example]
+  ami = "ami-07d9b9ddc6cd8dd30"
+  instance_type = "t2.micro"
     tags = {
-        Name = "python_scraper"
+        Name = "control-node"
     }
     key_name = "PythonScraperWorker"
     iam_instance_profile = "WebServerRole"
@@ -38,13 +67,7 @@ resource "aws_instance" "example" {
                 sudo apt-get install git -y &&
                 sudo apt install ruby-full wget -y &&
                 cd /home/ubuntu &&
-                sudo wget https://aws-codedeploy-us-east-1.s3.us-east-1.amazonaws.com/latest/install &&
-                sudo chmod +x ./install &&
-                sudo ./install auto &&
-                sudo service codedeploy-agent start &&
-                git clone "https://github.com/Vaskonti/Time2Play_Scraper.git" /home/ubuntu/Time2Play_Scraper &&
-                cd /home/ubuntu/Time2Play_Scraper &&
-                pip install -r requirements.txt
-                aws s3 cp s3://
+                git clone "https://github.com/Vaskonti/ansible_configs.git" /home/ubuntu/ansible_configs
+                python3 -m pip install --user ansible
                 EOF
 }
