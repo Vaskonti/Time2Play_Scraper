@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Сметки за общака</title>
+    <style>
+        .content {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            max-width: 600px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        h1 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        p {
+            margin: 10px 0;
+            line-height: 1.5;
+            font-size: 16px;
+        }
+        span {
+            font-weight: bold;
+            color: #333;
+        }
+        a {
+            display: inline-block;
+            padding: 12px 24px;
+            background-color: #ff5722;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <h1>Заплати си сметките за общежитието</h1>
+        <p>Имаш <span> {{ sumToPay }} лв.</span> в неплатени задължения!</p>
+        <a href="https://psbo.uni-sofia.bg/payments/login">Цъкай тука и ги плащай</a>
+        <p>Да не се налага Геновева да те тормози по телефона!</p>
+    </div>
+</body>
+</html>

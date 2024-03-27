@@ -1,3 +1,5 @@
-BeautifulSoup4
-boto3
-python-dotenv
+BeautifulSoup4~=4.12.3
+boto3~=1.34.59
+python-dotenv~=1.0.1
+requests~=2.31.0
+Jinja2~=3.1.3
