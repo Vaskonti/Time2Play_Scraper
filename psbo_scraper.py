@@ -24,7 +24,8 @@ for row in soup.select('tbody'):
 if finalString != "":
     sumToPay = (finalString.replace('\n', ' ').
                 replace(' ', '').
-                replace('лв.', ''))
+                replace('лв.', '').
+                replace(',', '.'))
     if float(sumToPay) >= float(mail_threshold):
         mail_service.send_email(
             "PSBO: Payments needed",
